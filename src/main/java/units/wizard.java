@@ -1,7 +1,8 @@
 package units;
-//Колдун
+
 public class wizard extends Person {
-    public wizard(String name) {
+    static  String personClass = "Колдун";
+    public wizard(String name, int x, int y) {
         super(name,
                 10,
                 15,
@@ -11,6 +12,12 @@ public class wizard extends Person {
                 5,
                 0,
                 0,
-                true);
+                true,
+                x,
+                y);
+    }
+    @Override
+    public String toString() {
+        return "["+personClass+"] - "+  super.toString()+" ("+ position.toString()+")";
     }
 }

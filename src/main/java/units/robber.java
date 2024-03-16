@@ -1,8 +1,9 @@
 package units;
-//Разбойник
+
 
 public class robber extends Person {
-    public robber(String name) {
+    static  String personClass = "Разбойник";
+    public robber(String name, int x, int y) {
         super(name,
                 10,
                 15,
@@ -12,8 +13,13 @@ public class robber extends Person {
                 5,
                 0,
                 0,
-                true);
+                true,
+                x,
+                y);
     }
 
-
+    @Override
+    public String toString() {
+        return "["+personClass+"] - "+  super.toString()+" ("+ position.toString()+")";
+    }
 }

@@ -2,10 +2,11 @@ package units;
 
 import java.util.Random;
 
-//Крестьянин
-public class peasant extends Person {
 
-    public peasant(String name) {
+public class peasant extends Person {
+    static  String personClass = "Крестьянин";
+
+    public peasant(String name, int x, int y) {
         super(name,
                 10,
                 15,
@@ -15,6 +16,12 @@ public class peasant extends Person {
                 5,
                 0,
                 0,
-                true);
+                true,
+                x,
+                y);
+    }
+    @Override
+    public String toString() {
+        return "["+personClass+"] - "+  super.toString()+" ("+ position.toString()+")";
     }
 }

@@ -1,7 +1,10 @@
 package units;
-//Снайпер
+
+import java.util.ArrayList;
+
 public class sniper extends Person {
-    public sniper(String name) {
+    static  String personClass = "Снайпер";
+    public sniper(String name, int x, int y) {
         super(name,
                 10,
                 15,
@@ -11,6 +14,24 @@ public class sniper extends Person {
                 5,
                 0,
                 0,
-                true);
+                true,
+                x,
+                y);
+    }
+
+    public  Person searchOpponents(ArrayList<Person> enemy){
+        Person target = null;
+        int distance = Integer.MAX_VALUE;
+        for (Person p : enemy){
+            if (p.distatnseTo(this) < distance){
+                distance = p.distatnseTo(this);
+                target = p;
+            }
+        }
+        return target;
+    }
+    @Override
+    public String toString() {
+        return "["+personClass+"] - "+  super.toString()+" ("+ position.toString()+")";
     }
 }

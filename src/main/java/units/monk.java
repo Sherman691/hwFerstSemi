@@ -1,7 +1,8 @@
 package units;
-//Монах
+
 public class monk extends Person {
-    public monk(String name) {
+    static  String personClass = "Монах";
+    public monk(String name, int x, int y) {
         super(name,
                 10,
                 15,
@@ -11,6 +12,12 @@ public class monk extends Person {
                 5,
                 0,
                 0,
-                true);
+                true,
+                x,
+                y);
+    }
+    @Override
+    public String toString() {
+        return "["+personClass+"] - "+  super.toString()+" ("+ position.toString()+")";
     }
 }
