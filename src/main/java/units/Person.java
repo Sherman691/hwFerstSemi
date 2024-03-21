@@ -1,11 +1,17 @@
 package units;
 
+import Main.ActionInterfase;
 import Main.Position;
 
-public abstract class Person {
-    protected int hp = 10;
-    protected int armor = 0;
-    protected int damage = 0;
+import java.util.ArrayList;
+
+import static java.lang.Integer.MAX_VALUE;
+
+
+public abstract class Person implements ActionInterfase {
+    protected int hp;
+    protected int armor;
+    protected int damage;
     protected String name;
     protected int maxHp;
     protected int luck;
@@ -14,6 +20,8 @@ public abstract class Person {
     protected int intellect;
     protected boolean inGame;
     protected Position position;
+    public int priority;
+
 
     public Person(String name,
                   int hp,
@@ -26,7 +34,8 @@ public abstract class Person {
                   int intellect,
                   boolean inGame,
                   int x,
-                  int y) {
+                  int y,
+                  int priority) {
         this.name = name;
         this.hp = hp;
         this.maxHp = maxHp;
@@ -38,6 +47,7 @@ public abstract class Person {
         this.intellect = intellect;
         this.inGame = inGame;
         position = new Position(x, y);
+        this.priority = priority;
     }
 
 
@@ -51,7 +61,15 @@ public abstract class Person {
         position.setY(y);
     }
 
-    public int distatnseTo(Person target) {
+    /**
+     * Дистанция до target
+     * @param target
+     * @return
+     */
+    public int distanceTo(Person target) {
         return (int) Math.sqrt(Math.pow(position.getX() - target.position.getX(), 2) + Math.pow(position.getY() - target.position.getY(), 2));
     }
+
+
+
 }

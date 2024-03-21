@@ -10,7 +10,7 @@ public class main {
 
     public static void main(String[] args) {
 
-        secondSemi_PrintTeam();
+        PrintTeam();
     }
 
 
@@ -57,14 +57,23 @@ public class main {
         }
 
     }
-    private static void secondSemi_PrintTeam(){
+    private static void PrintTeam(){
         ArrayList<Person> red = new ArrayList<>();
         ArrayList<Person> blue = new ArrayList<>();
+        ArrayList<Person> all = new ArrayList<>();
         secondSemi_CreateTeam(red,10, 0);
         secondSemi_CreateTeam(blue,10, 3);
-        System.out.println(red);
-        System.out.println();
-        System.out.println(blue);
+        all.addAll(red);
+        all.addAll(blue);
+        all.sort(new PrioritySort());
+        for (Person p:all){
+            System.out.println(p + " делает ход.");
+            if (red.contains(p)){
+                p.step(blue);
+            }else{
+                p.step(red);
+            }
+        }
     }
 
     private static String getName() {

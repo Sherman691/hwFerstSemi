@@ -1,7 +1,10 @@
 package units;
 
+import java.util.ArrayList;
+
 public class wizard extends Person {
     static  String personClass = "Колдун";
+    static int priority = 1;
     public wizard(String name, int x, int y) {
         super(name,
                 10,
@@ -14,10 +17,17 @@ public class wizard extends Person {
                 0,
                 true,
                 x,
-                y);
+                y,
+                priority);
     }
     @Override
     public String toString() {
         return "["+personClass+"] - "+  super.toString()+" ("+ position.toString()+")";
+    }
+
+
+    @Override
+    public void step(ArrayList<Person> target) {
+
     }
 }
