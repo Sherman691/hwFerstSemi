@@ -1,6 +1,9 @@
 package Main;
 
+import java.net.CookieHandler;
+
 public class Position {
+    public Position position;
     private int curX;
     private int curY;
 
@@ -39,4 +42,19 @@ public class Position {
     public String toString() {
         return curX + ":" + curY;
     }
+    public Position getDelta(Position target){
+        return  new Position(target.getX() - getX(),
+                            target.getY() - getY());
+    }
+    public boolean check  (Position pt){
+
+        return curX == pt.curX && curY == pt.curY;
+    }
+
+    public void add(int dX, int dY) {
+        curX += dX;
+        curY += dY;
+    }
+
+
 }

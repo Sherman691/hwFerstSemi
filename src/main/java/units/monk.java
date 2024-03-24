@@ -27,7 +27,7 @@ public class monk extends Person {
 
 
     @Override
-    public void step(ArrayList<Person> target) {
+    public void step(ArrayList<Person> enemies, ArrayList<Person> friends) {
 
     }
 }

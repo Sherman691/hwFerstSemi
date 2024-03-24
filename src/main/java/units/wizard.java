@@ -25,9 +25,8 @@ public class wizard extends Person {
         return "["+personClass+"] - "+  super.toString()+" ("+ position.toString()+")";
     }
 
-
     @Override
-    public void step(ArrayList<Person> target) {
+    public void step(ArrayList<Person> enemies, ArrayList<Person> friends) {
 
     }
 }

@@ -66,12 +66,17 @@ public class main {
         all.addAll(red);
         all.addAll(blue);
         all.sort(new PrioritySort());
-        for (Person p:all){
-            System.out.println(p + " делает ход.");
-            if (red.contains(p)){
-                p.step(blue);
-            }else{
-                p.step(red);
+        for (int i = 0; i <10; i++) {
+            System.out.println("Ход: " + i);
+            System.out.println();
+
+            for (Person p : all) {
+                System.out.println(p + " делает ход.");
+                if (red.contains(p)) {
+                    p.step(blue, red);
+                } else {
+                    p.step(red, blue);
+                }
             }
         }
     }

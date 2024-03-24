@@ -1,7 +1,10 @@
 package units;
 
 
+import Main.Position;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 public class robber extends Person {
     static  String personClass = "Разбойник";
@@ -28,8 +31,51 @@ public class robber extends Person {
     }
 
 
+    private void attack(Person enemy) {
+        int dealingDamage = damage;
+        luck = new Random().nextInt(100);
+        if (luck <= 15) {
+            dealingDamage = damage * 3;
+        }
+        System.out.println("наносит"+ dealingDamage);
+
+    }
+
+    private void move(Person toEnemy, ArrayList<Person> friends) {
+        Position delta = position.getDelta(toEnemy.position);
+        Position newPos = new Position(position.getX(), position.getY());
+        int dX = delta.getX();
+        int dY = delta.getY();
+        if (dX!=0){
+            dX = Math.abs(dX)/dX;
+        }
+        if (dY!=0){
+            dY = Math.abs(dY)/dY;
+        }
+        if (dX != 0 && dY !=0){
+            dY=0;
+        }
+        newPos.add(dX,dY);
+        for (Person p : friends){
+            if(p.position.check(newPos))
+                return;
+        }
+        position = newPos;
+        System.out.println(position);
+    }
+
     @Override
-    public void step(ArrayList<Person> target) {
+    public void step(ArrayList<Person> targetEnemies, ArrayList<Person> targetFriends) {
+
+        Person target = this.searchOpponents(targetEnemies);
+        if (hp <= 0 || target == null) {
+            return;
+        }
+        if (distanceTo(target) <= 2) {
+            attack(target);
+        } else {
+            move(target, targetFriends);
+        }
 
     }
 }

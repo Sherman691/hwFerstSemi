@@ -5,8 +5,6 @@ import Main.Position;
 
 import java.util.ArrayList;
 
-import static java.lang.Integer.MAX_VALUE;
-
 
 public abstract class Person implements ActionInterfase {
     protected int hp;
@@ -70,6 +68,17 @@ public abstract class Person implements ActionInterfase {
         return (int) Math.sqrt(Math.pow(position.getX() - target.position.getX(), 2) + Math.pow(position.getY() - target.position.getY(), 2));
     }
 
+    public Person searchOpponents(ArrayList<Person> enemy) {
+        Person target = null;
+        int distance = Integer.MAX_VALUE;
+        for (Person p : enemy) {
+            if (p.distanceTo(this) < distance) {
+                distance = p.distanceTo(this);
+                target = p;
+            }
+        }
+        return target;
+    }
 
 
 }

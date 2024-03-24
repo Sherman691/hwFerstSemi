@@ -44,17 +44,7 @@ public class crossbowman extends Person {
      * @param enemy массив с противниками
      * @return
      */
-    public Person searchOpponents(ArrayList<Person> enemy) {
-        Person target = null;
-        int distance = Integer.MAX_VALUE;
-        for (Person p : enemy) {
-            if (p.distanceTo(this) < distance) {
-                distance = p.distanceTo(this);
-                target = p;
-            }
-        }
-        return target;
-    }
+
 
     @Override
     public String toString() {
@@ -86,7 +76,7 @@ public class crossbowman extends Person {
     }
 
     @Override
-    public void step(ArrayList<Person> targetEnemies) {
+    public void step(ArrayList<Person> targetEnemies, ArrayList<Person> targetFriends) {
         if (hp <= 0 || arrows <= 0) {
             if (arrows <= 0) {
                 System.out.println(name + " - кончились стрелы");
