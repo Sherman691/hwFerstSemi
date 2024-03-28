@@ -56,7 +56,7 @@ public class crossbowman extends Person {
      * @param enemy противник
      */
     private void shot(Person enemy) {
-        System.out.println("Стреляет по -> "+ enemy);
+//        System.out.println("Стреляет по -> "+ enemy);
         arrows--;
 
         int distance = distanceTo(enemy);
@@ -71,7 +71,8 @@ public class crossbowman extends Person {
         } else {
             dealingDamage *=  2;
         }
-        System.out.println("(урон = "+ dealingDamage+")");
+        enemy.hp -=dealingDamage;
+        System.out.println(name+personClass+"(урон = "+ dealingDamage+")" + enemy);
 
     }
 
@@ -79,7 +80,7 @@ public class crossbowman extends Person {
     public void step(ArrayList<Person> targetEnemies, ArrayList<Person> targetFriends) {
         if (hp <= 0 || arrows <= 0) {
             if (arrows <= 0) {
-                System.out.println(name + " - кончились стрелы");
+//                System.out.println(name + " - кончились стрелы");
             }
             return;
         }
@@ -87,5 +88,10 @@ public class crossbowman extends Person {
         if (target != null) {
             shot(target);
         }
+    }
+
+    @Override
+    public String getInfo() {
+        return personClass;
     }
 }

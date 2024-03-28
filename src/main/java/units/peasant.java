@@ -5,7 +5,7 @@ import java.util.Random;
 
 
 public class peasant extends Person {
-    static  String personClass = "Крестьянин";
+    static  String personClass = "крестьянин";
     static int priority = 0;
 
     public peasant(String name, int x, int y) {
@@ -32,5 +32,10 @@ public class peasant extends Person {
     @Override
     public void step(ArrayList<Person> enemies, ArrayList<Person> friends) {
 
+    }
+
+    @Override
+    public String getInfo() {
+        return personClass;
     }
 }

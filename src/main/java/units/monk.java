@@ -30,4 +30,9 @@ public class monk extends Person {
     public void step(ArrayList<Person> enemies, ArrayList<Person> friends) {
 
     }
+
+    @Override
+    public String getInfo() {
+        return personClass;
+    }
 }

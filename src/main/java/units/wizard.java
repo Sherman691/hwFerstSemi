@@ -3,7 +3,7 @@ package units;
 import java.util.ArrayList;
 
 public class wizard extends Person {
-    static  String personClass = "Колдун";
+    static  String personClass = "Волшебник";
     static int priority = 1;
     public wizard(String name, int x, int y) {
         super(name,
@@ -22,11 +22,16 @@ public class wizard extends Person {
     }
     @Override
     public String toString() {
-        return "["+personClass+"] - "+  super.toString()+" ("+ position.toString()+")";
+        return "["+personClass+"] - "+  super.toString()+" ("+ position.toString()+")"+hp;
     }
 
     @Override
     public void step(ArrayList<Person> enemies, ArrayList<Person> friends) {
 
+    }
+
+    @Override
+    public String getInfo() {
+        return personClass;
     }
 }

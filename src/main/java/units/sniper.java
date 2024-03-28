@@ -15,7 +15,7 @@ public class sniper extends Person {
                 15,
                 0,
                 1,
-                3,
+                10,
                 5,
                 0,
                 0,
@@ -48,7 +48,7 @@ public class sniper extends Person {
      * @param enemy противник
      */
     private void shot(Person enemy) {
-        System.out.println("Стреляет по -> "+ enemy);
+//        System.out.println("Стреляет по -> "+ enemy);
         arrows--;
         luck = new Random().nextInt(100);
         if(luck <25){
@@ -62,14 +62,15 @@ public class sniper extends Person {
         } else {
             dealingDamage *=2;
         }
-        System.out.println("(урон = "+ dealingDamage+")");
+        enemy.hp -= dealingDamage;
+//        System.out.println("(урон = "+ dealingDamage+")");
     }
 
     @Override
     public void step(ArrayList<Person> targetEnemies, ArrayList<Person> targetFriends) {
         if (hp <= 0 || arrows <= 0) {
             if (arrows <= 0) {
-                System.out.println(name + " - кончились стрелы");
+//                System.out.println(name + " - кончились стрелы");
             }
             return;
         }
@@ -77,5 +78,10 @@ public class sniper extends Person {
         if (target != null) {
             shot(target);
         }
+    }
+
+    @Override
+    public String getInfo() {
+        return personClass;
     }
 }

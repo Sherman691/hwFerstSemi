@@ -72,13 +72,23 @@ public abstract class Person implements ActionInterfase {
         Person target = null;
         int distance = Integer.MAX_VALUE;
         for (Person p : enemy) {
-            if (p.distanceTo(this) < distance) {
-                distance = p.distanceTo(this);
-                target = p;
+            if (p.hp >0){
+                int dist = p.distanceTo(p);
+                if(dist<distance){
+                    distance = dist;
+                    target = p;
+                }
             }
         }
         return target;
     }
 
+    public int getHp() {
+        return hp;
+    }
+
+    public int[] getCoords(){
+        return new int[] {position.getY(), position.getX()};
+    }
 
 }

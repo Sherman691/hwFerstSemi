@@ -15,7 +15,7 @@ public class spearman extends Person {
                 15,
                 0,
                 1,
-                0,
+                3,
                 5,
                 0,
                 0,
@@ -36,7 +36,8 @@ public class spearman extends Person {
         if (luck <= 30) {
             dealingDamage = damage * 2;
         }
-        System.out.println("наносит"+dealingDamage);
+        enemy.hp -= dealingDamage;
+//        System.out.println("наносит"+dealingDamage);
 
     }
 
@@ -57,10 +58,12 @@ public class spearman extends Person {
         newPos.add(dX,dY);
         for (Person p : friends){
             if(p.position.check(newPos))
+
+
                 return;
         }
         position = newPos;
-        System.out.println(position);
+//        System.out.println(position);
     }
 
     @Override
@@ -75,6 +78,12 @@ public class spearman extends Person {
         } else {
             move(target, targetFriends);
         }
+
+    }
+
+    @Override
+    public String getInfo() {
+        return personClass;
 
     }
 }

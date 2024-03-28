@@ -5,14 +5,18 @@ import units.*;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class main {
+
+    static ArrayList<Person> red = new ArrayList<>();
+    static ArrayList<Person> blue = new ArrayList<>();
+    static ArrayList<Person> all = new ArrayList<>();
 
     public static void main(String[] args) {
 
         PrintTeam();
     }
-
 
 
     public static void secondSemi_CreateTeam(ArrayList<Person> team, int number, int start) {
@@ -28,50 +32,49 @@ public class main {
 //        Одна комманда находится с левой стороны другая с правой(у=0 и у=9).
 //        В класс лучников добавить метод поиск ближайшего противника.
 //        Алгоритм расчёта расстояний реализовать в классе координат.
-        while (--number >=0){
+        while (--number >= 0) {
             int n = start + new Random().nextInt(4);
-            switch (n){
+            switch (n) {
                 case 0:
-                    team.add(new crossbowman(getName(),0, number));
+                    team.add(new crossbowman(getName(), 0, number));
                     break;
                 case 1:
-                    team.add(new monk(getName(),0, number));
+                    team.add(new monk(getName(), 0, number));
                     break;
                 case 2:
-                    team.add(new spearman(getName(),0, number));
+                    team.add(new spearman(getName(), 0, number));
                     break;
                 case 3:
-                    team.add(new peasant(getName(), start*3, number));
+                    team.add(new peasant(getName(), start * 3, number));
                     break;
                 case 4:
-                    team.add (new robber(getName(),9, number));
+                    team.add(new robber(getName(), 9, number));
                     break;
                 case 5:
-                    team.add (new sniper(getName(),9, number));
+                    team.add(new sniper(getName(), 9, number));
                     break;
                 case 6:
-                    team.add (new wizard(getName(),9, number));
+                    team.add(new wizard(getName(), 9, number));
                     break;
 
             }
         }
 
     }
-    private static void PrintTeam(){
-        ArrayList<Person> red = new ArrayList<>();
-        ArrayList<Person> blue = new ArrayList<>();
-        ArrayList<Person> all = new ArrayList<>();
-        secondSemi_CreateTeam(red,10, 0);
-        secondSemi_CreateTeam(blue,10, 3);
+
+    private static void PrintTeam() {
+        secondSemi_CreateTeam(red, 10, 0);
+        secondSemi_CreateTeam(blue, 10, 3);
         all.addAll(red);
         all.addAll(blue);
         all.sort(new PrioritySort());
-        for (int i = 0; i <10; i++) {
-            System.out.println("Ход: " + i);
-            System.out.println();
+        Scanner scanner = new Scanner(System.in);
 
+
+        while (true) {
+            String input = scanner.nextLine();
+            View.view();
             for (Person p : all) {
-                System.out.println(p + " делает ход.");
                 if (red.contains(p)) {
                     p.step(blue, red);
                 } else {

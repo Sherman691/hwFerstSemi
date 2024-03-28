@@ -3,20 +3,22 @@ package Main;
 import java.net.CookieHandler;
 
 public class Position {
-    public Position position;
+
     private int curX;
     private int curY;
 
-    private int widht;
-    private int height;
+    private int widht = 10;
+    private int height = 10;
 
     public Position(int x, int y) {
         curX = x;
         curY = y;
-        widht = 10;
-        height = 10;
     }
 
+    public void setXY(int x, int y) {
+        curY = y;
+        curX = x;
+    }
     public int getX() {
         return curX;
     }
@@ -24,6 +26,12 @@ public class Position {
     public int getY() {
         return curY;
     }
+
+
+    public void setCurY(int curY) {
+        this.curY = curY;
+    }
+
     public  void setX (int x){curX = x;}
     public  void setY (int y){curY = y;}
 

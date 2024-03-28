@@ -15,7 +15,7 @@ public class robber extends Person {
                 15,
                 0,
                 1,
-                0,
+                4,
                 5,
                 0,
                 0,
@@ -37,7 +37,8 @@ public class robber extends Person {
         if (luck <= 15) {
             dealingDamage = damage * 3;
         }
-        System.out.println("наносит"+ dealingDamage);
+        enemy.hp-=dealingDamage;
+//        System.out.println("наносит"+ dealingDamage);
 
     }
 
@@ -61,7 +62,7 @@ public class robber extends Person {
                 return;
         }
         position = newPos;
-        System.out.println(position);
+//        System.out.println(position);
     }
 
     @Override
@@ -77,5 +78,10 @@ public class robber extends Person {
             move(target, targetFriends);
         }
 
+    }
+
+    @Override
+    public String getInfo() {
+        return personClass;
     }
 }
